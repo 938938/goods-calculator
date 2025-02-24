@@ -32,9 +32,9 @@ export default function RootLayout({
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
-            <div className='w-2/3 mx-auto flex flex-col items-center bg-gray-700'>
-              <div className='w-screen max-w-xl'>{children}</div>
+            <div className='w-screen max-w-xl mx-auto bg-gray-700 p-2'>
               <Nav />
+              <div>{children}</div>
             </div>
           </body>
         </RecoilRoot>
