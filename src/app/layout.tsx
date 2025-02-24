@@ -32,8 +32,8 @@ export default function RootLayout({
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
-            <div className='w-2/3 mx-auto flex flex-col items-center py-10 gap-2'>
-              <div className='w-screen'>{children}</div>
+            <div className='w-2/3 mx-auto flex flex-col items-center bg-gray-700'>
+              <div className='w-screen max-w-xl'>{children}</div>
               <Nav />
             </div>
           </body>
