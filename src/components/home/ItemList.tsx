@@ -9,7 +9,7 @@ const ItemList = () => {
   const goodsList = useRecoilValue(listState);
   return (
     <div className='h-[calc(100svh-100px)] flex flex-col'>
-      <div className='h-12 bg-gray-700 text-white flex'>
+      <div className='bg-gray-700 text-gray-400 flex'>
         <div className='w-1/3 p-2 text-left'>상품명</div>
         <div className='w-1/4 p-2 text-right'>가격</div>
         <div className='w-5/12 p-2 text-center'>수량</div>
