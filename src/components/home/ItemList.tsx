@@ -8,26 +8,22 @@ const ItemList = () => {
   useInitListState();
   const goodsList = useRecoilValue(listState);
   return (
-    <table className='w-full min-w-max table-fixed bg-gray-50'>
-      <thead className='bg-gray-700'>
-        <tr>
-          <th className='text-white p-2 text-left w-1/3'>
-            <p className='font-normal opacity-70 text-sm'>상품명</p>
-          </th>
-          <th className='text-white p-2 text-right w-1/4'>
-            <p className='font-normal opacity-70 text-sm'>가격</p>
-          </th>
-          <th className='text-white p-2 w-5/12'>
-            <p className='font-normal opacity-70 text-sm'>수량</p>
-          </th>
-        </tr>
-      </thead>
-      <tbody className='bg-white '>
-        {goodsList.map((item) => (
-          <Item item={item} key={item.id} />
-        ))}
-      </tbody>
-    </table>
+    <div className='h-[calc(100svh-100px)] flex flex-col'>
+      <div className='h-12 bg-gray-700 text-white flex'>
+        <div className='w-1/3 p-2 text-left'>상품명</div>
+        <div className='w-1/4 p-2 text-right'>가격</div>
+        <div className='w-5/12 p-2 text-center'>수량</div>
+      </div>
+      <div className='flex-1 overflow-y-auto'>
+        <table className='table-fixed w-full border-collapse'>
+          <tbody className='bg-white overflow-y-scroll h-20'>
+            {goodsList.map((item) => (
+              <Item item={item} key={item.id} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 

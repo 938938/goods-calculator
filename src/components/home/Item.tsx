@@ -2,7 +2,7 @@
 
 import { ItemType } from '@/model/type';
 import { listState } from '@/recoil/listState';
-import { Button, IconButton, Input } from '@material-tailwind/react';
+import { IconButton, Input } from '@material-tailwind/react';
 import { useSetRecoilState } from 'recoil';
 
 const Item = ({ item }: { item: ItemType }) => {
@@ -17,11 +17,11 @@ const Item = ({ item }: { item: ItemType }) => {
   };
   return (
     <tr key={item.id} className='h-[30px]'>
-      <td className='p-3'>
-        <p className='truncate w-24'>{item.name}</p>
+      <td className='p-3 w-1/3'>
+        <p className='truncate'>{item.name}</p>
       </td>
-      <td className='p-3 text-right'>{item.cost.toLocaleString()}</td>
-      <td className='p-3'>
+      <td className='p-3 text-right w-1/4'>{item.cost.toLocaleString()}</td>
+      <td className='p-3 w-5/12'>
         <div className='relative'>
           <div className='absolute left-1 top-1 flex gap-0.5 z-50'>
             <IconButton
