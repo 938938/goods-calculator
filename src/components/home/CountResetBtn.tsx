@@ -10,8 +10,8 @@ const CountResetBtn = () => {
     setGoodsList((prev) => prev.map((ele) => ({ ...ele, count: 0 })));
   };
   return (
-    <Button onClick={onCountResetHandler} className='w-full'>
-      수량 초기화
+    <Button onClick={onCountResetHandler} className='bg-gray-800' size='sm'>
+      초기화
     </Button>
   );
 };
