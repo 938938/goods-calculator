@@ -2,7 +2,7 @@
 
 import { ItemType } from '@/model/type';
 import { listState } from '@/recoil/listState';
-import { Button, Input } from '@material-tailwind/react';
+import { Button, IconButton, Input } from '@material-tailwind/react';
 import { useSetRecoilState } from 'recoil';
 
 const Item = ({ item }: { item: ItemType }) => {
@@ -16,23 +16,46 @@ const Item = ({ item }: { item: ItemType }) => {
     );
   };
   return (
-    <tr key={item.id}>
-      <td className='p-4 border-b'>{item.name}</td>
-      <td className='p-4 border-b'>{item.cost.toLocaleString()}</td>
-      <td className='p-4 border-b flex gap-2'>
-        <Button
-          onClick={() => onCountChangeHandler(Math.max(item.count - 1, 0))}
-        >
-          -
-        </Button>
-        <Input
-          label='수량'
-          type='number'
-          value={item.count}
-          onChange={(e) => onCountChangeHandler(Number(e.target.value))}
-          min={0}
-        />
-        <Button onClick={() => onCountChangeHandler(item.count + 1)}>+</Button>
+    <tr key={item.id} className='h-[30px]'>
+      <td className='p-3'>
+        <p className='truncate w-24'>{item.name}</p>
+      </td>
+      <td className='p-3 text-right'>{item.cost.toLocaleString()}</td>
+      <td className='p-3'>
+        <div className='relative'>
+          <div className='absolute left-1 top-1 flex gap-0.5 z-50'>
+            <IconButton
+              size='sm'
+              variant='text'
+              className='rounded'
+              onClick={() => onCountChangeHandler(Math.max(item.count - 1, 0))}
+            >
+              -
+            </IconButton>
+          </div>
+          <Input
+            type='number'
+            value={item.count}
+            onChange={(e) => onCountChangeHandler(Number(e.target.value))}
+            className='!border-t-blue-gray-200 placeholder:text-blue-gray-300 placeholder:opacity-100  focus:!border-t-gray-900 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none text-center'
+            labelProps={{
+              className: 'before:content-none after:content-none',
+            }}
+            containerProps={{
+              className: 'min-w-0',
+            }}
+          />
+          <div className='absolute right-1 top-1 flex gap-0.5'>
+            <IconButton
+              size='sm'
+              variant='text'
+              className='rounded'
+              onClick={() => onCountChangeHandler(item.count + 1)}
+            >
+              +
+            </IconButton>
+          </div>
+        </div>
       </td>
     </tr>
   );
