@@ -96,16 +96,29 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
         </td>
         <td className='p-3 flex gap-2'>
           {editValues?.id === item.id ? (
-            <Button size='sm' onClick={onSaveHandler} color='blue'>
+            <Button
+              size='sm'
+              onClick={onSaveHandler}
+              color='blue'
+              className='px-3'
+            >
               저장
             </Button>
           ) : (
-            <Button size='sm' onClick={() => onEditClickHandler(item)}>
+            <Button
+              size='sm'
+              onClick={() => onEditClickHandler(item)}
+              className='px-3'
+            >
               수정
             </Button>
           )}
           {editValues?.id === item.id ? (
-            <Button size='sm' onClick={() => setEditValues(null)}>
+            <Button
+              size='sm'
+              onClick={() => setEditValues(null)}
+              className='px-3'
+            >
               취소
             </Button>
           ) : (
@@ -116,6 +129,7 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
                 setDeleteId(item.id);
                 setModalOpen(true);
               }}
+              className='px-3'
             >
               삭제
             </Button>
