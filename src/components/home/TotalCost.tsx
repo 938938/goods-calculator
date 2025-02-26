@@ -5,6 +5,7 @@ import { useRecoilValue } from 'recoil';
 import CountResetBtn from './CountResetBtn';
 import TotalItem from './TotalItem';
 import SellBtn from './SellBtn';
+import BottonBox from '../BottonBox';
 
 const TotalCost = () => {
   const goodsList = useRecoilValue(listState);
@@ -13,21 +14,17 @@ const TotalCost = () => {
   }, 0);
 
   return (
-    <div className='absolute bottom-1 p-2 w-full'>
-      <div className='rounded-xl bg-gray-600 w-full flex p-2 gap-2 items-center justify-between shadow-xl'>
-        <div className='flex gap-2'>
-          <CountResetBtn />
-          <TotalItem />
-        </div>
-        <p className='text-white text-xl'>
-          <span className='font-bold text-2xl'>
-            {totalCost.toLocaleString()}
-          </span>
-          원
-        </p>
-        <SellBtn />
+    <BottonBox>
+      <div className='flex gap-2'>
+        <CountResetBtn />
+        <TotalItem />
       </div>
-    </div>
+      <p className='text-white text-xl'>
+        <span className='font-bold text-2xl'>{totalCost.toLocaleString()}</span>
+        원
+      </p>
+      <SellBtn />
+    </BottonBox>
   );
 };
 

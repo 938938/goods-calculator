@@ -59,32 +59,42 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
   return (
     <>
       <tr key={item.id}>
-        <td className='p-4 border-b'>
+        <td className='p-3 w-1/4'>
           {editValues?.id === item.id ? (
             <Input
               name='name'
               value={editValues.name}
               onChange={onDataChangeHandler}
-              className='w-full'
             />
           ) : (
-            <p>{item.name}</p>
+            <p className='truncate'>{item.name}</p>
           )}
         </td>
-        <td className='p-4 border-b'>
+        <td className='p-3 w-1/6 text-right'>
           {editValues?.id === item.id ? (
             <Input
               name='cost'
               type='number'
               value={editValues.cost}
               onChange={onDataChangeHandler}
-              className='w-full'
+            />
+          ) : (
+            <p>{item.count}</p>
+          )}
+        </td>
+        <td className='p-3 w-1/4 text-right'>
+          {editValues?.id === item.id ? (
+            <Input
+              name='cost'
+              type='number'
+              value={editValues.cost}
+              onChange={onDataChangeHandler}
             />
           ) : (
             <p>{item.cost.toLocaleString()}</p>
           )}
         </td>
-        <td className='p-4 border-b flex gap-2'>
+        <td className='p-3 flex gap-2'>
           {editValues?.id === item.id ? (
             <Button size='sm' onClick={onSaveHandler} color='blue'>
               저장

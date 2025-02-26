@@ -16,9 +16,9 @@ const ListResetBtn = () => {
     setModalOpen(false);
   };
   return (
-    <>
-      <Button onClick={() => setModalOpen(true)} className='w-full'>
-        목록 모두 삭제
+    <div className='flex justify-center items-center w-screen p-2'>
+      <Button onClick={() => setModalOpen(true)} className='bg-gray-800'>
+        초기화
       </Button>
       <DelModal
         open={modalOpen}
@@ -26,7 +26,7 @@ const ListResetBtn = () => {
         onDeleteHandler={onListResetHandler}
         type='초기화'
       />
-    </>
+    </div>
   );
 };
 

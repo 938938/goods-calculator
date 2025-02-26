@@ -1,11 +1,9 @@
-import AddItem from "@/components/edit/AddItem";
-import EditItemList from "@/components/edit/EditItemList";
-import ListResetBtn from "@/components/edit/ListResetBtn";
+import AddItem from '@/components/edit/AddItem';
+import EditItemList from '@/components/edit/EditItemList';
 
 const EditPage = () => {
   return (
     <div className='flex gap-3 flex-col'>
-      <ListResetBtn />
       <EditItemList />
       <AddItem />
     </div>

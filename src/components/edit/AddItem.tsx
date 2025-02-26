@@ -5,6 +5,7 @@ import { listState } from '@/recoil/listState';
 import { Button, Input } from '@material-tailwind/react';
 import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
+import BottonBox from '../BottonBox';
 
 const AddItem = () => {
   const [name, setName] = useState('');
@@ -18,7 +19,7 @@ const AddItem = () => {
       id: new Date().toISOString(),
       name,
       cost: cost === '' ? 0 : cost,
-      count: 10,
+      count: 99,
     };
 
     setGoodsList((prev) => {
@@ -32,13 +33,14 @@ const AddItem = () => {
   };
 
   return (
-    <div>
+    <BottonBox>
       <div className='flex'>
         <Input
           label='상품명'
           type='text'
           value={name}
           onChange={(e) => setName(e.target.value)}
+          
         />
         <Input
           label='가격'
@@ -50,7 +52,7 @@ const AddItem = () => {
       <Button className='w-full' onClick={onClickHandler}>
         추가
       </Button>
-    </div>
+    </BottonBox>
   );
 };
 
