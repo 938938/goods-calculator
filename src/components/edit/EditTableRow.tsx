@@ -102,7 +102,9 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
               }}
             />
           ) : (
-            <p>{item.stock}</p>
+            <p className={` ${item.stock === 0 && 'text-orange-800'}`}>
+              {item.stock}
+            </p>
           )}
         </td>
         <td className='p-3 w-1/4 text-right'>
