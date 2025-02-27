@@ -1,12 +1,14 @@
 'use client';
 
 import { receiptState } from '@/recoil/receiptState';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import Receipt from './Receipt';
 import { ReceiptType } from '@/model/type';
+import { totalState } from '@/recoil/totalState';
 
 const TotalReceipt = () => {
   const receiptList = useRecoilValue(receiptState);
+  const [totalCost, setTotalCost] = useRecoilState(totalState);
   if (!receiptList || receiptList.length === 0) {
     return <></>;
   }
@@ -24,6 +26,10 @@ const TotalReceipt = () => {
     });
   });
 
+  setTotalCost(
+    Object.values(totalSoldItems).reduce((sum, item) => sum + item.totalCost, 0)
+  );
+
   const total = {
     id: 'total',
     date: `${receiptList[0].date.substring(0, 10)} ~ ${receiptList[
@@ -34,10 +40,7 @@ const TotalReceipt = () => {
       (sum, item) => sum + item.count,
       0
     ),
-    result: Object.values(totalSoldItems).reduce(
-      (sum, item) => sum + item.totalCost,
-      0
-    ),
+    result: totalCost,
   } as ReceiptType;
 
   return <Receipt receipt={total} type='total' />;
