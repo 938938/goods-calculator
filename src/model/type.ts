@@ -4,6 +4,7 @@ export type ItemType = {
   cost: number;
   count: number;
   stock: number;
+  initial: number;
 };
 
 export type soldItemsType = {

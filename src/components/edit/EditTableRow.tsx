@@ -28,6 +28,7 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
         cost: 0,
         stock: 0,
         count: 0,
+        initial: 99,
       };
 
       return {
@@ -94,8 +95,15 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
               onDataChangeHandler={onDataChangeHandler}
             />
           ) : (
-            <p className={` ${item.stock === 0 && 'text-orange-800'}`}>
-              {item.stock}
+            <p className='text-gray-600'>
+              <span
+                className={` ${
+                  item.stock === 0 ? 'text-orange-800' : 'text-black'
+                } font-bold`}
+              >
+                {item.stock}
+              </span>
+              /{item.initial}
             </p>
           )}
         </td>

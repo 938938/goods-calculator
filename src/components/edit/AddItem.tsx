@@ -27,6 +27,7 @@ const AddItem = () => {
       name,
       cost: cost === '' ? 0 : cost,
       stock: stock === '' ? 99 : stock,
+      initial: stock === '' ? 99 : stock,
       count: 0,
     };
 
