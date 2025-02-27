@@ -44,13 +44,16 @@ const Item = ({ item }: { item: ItemType }) => {
             containerProps={{
               className: 'min-w-0',
             }}
+            max={item.stock}
           />
           <div className='absolute right-1 top-1 flex gap-0.5'>
             <IconButton
               size='sm'
               variant='text'
               className='rounded'
-              onClick={() => onCountChangeHandler(item.count + 1)}
+              onClick={() =>
+                onCountChangeHandler(Math.min(item.count + 1, item.stock))
+              }
             >
               +
             </IconButton>

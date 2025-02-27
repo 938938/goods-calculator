@@ -21,15 +21,21 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
   const onDataChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setEditValues((prev) => {
-      const updated = prev ?? { id: '', name: '', cost: 99, count: 0 };
+      const updated = prev ?? {
+        id: '',
+        name: '',
+        cost: 0,
+        stock: 0,
+        count: 0,
+      };
 
       return {
         ...updated,
         [name]:
           name === 'cost'
             ? Number(value) || 0
-            : name === 'count'
-            ? Number(value) || 99
+            : name === 'stock'
+            ? Number(value) || 0
             : value,
       };
     });
@@ -89,9 +95,9 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
         <td className='p-3 w-1/6 text-right'>
           {editValues?.id === item.id ? (
             <Input
-              name='count'
+              name='stock'
               type='number'
-              value={editValues.count}
+              value={editValues.stock}
               onChange={onDataChangeHandler}
               className='!border-t-blue-gray-200 placeholder:text-blue-gray-300 placeholder:opacity-100  focus:!border-t-gray-900 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'
               labelProps={{
@@ -102,7 +108,7 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
               }}
             />
           ) : (
-            <p>{item.count}</p>
+            <p>{item.stock}</p>
           )}
         </td>
         <td className='p-3 w-1/4 text-right'>

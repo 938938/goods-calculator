@@ -10,7 +10,7 @@ import BottonBox from '../BottonBox';
 const AddItem = () => {
   const [name, setName] = useState('');
   const [cost, setCost] = useState<number | ''>('');
-  const [count, setCount] = useState<number | ''>('');
+  const [stock, setStock] = useState<number | ''>('');
   const [isError, setIsError] = useState<boolean>(false);
   const setGoodsList = useSetRecoilState(listState);
 
@@ -26,7 +26,8 @@ const AddItem = () => {
       id: new Date().toISOString(),
       name,
       cost: cost === '' ? 0 : cost,
-      count: count === '' ? 99 : count,
+      stock: stock === '' ? 99 : stock,
+      count: 0,
     };
 
     setGoodsList((prev) => {
@@ -36,7 +37,7 @@ const AddItem = () => {
     });
 
     setName('');
-    setCount('');
+    setStock('');
     setCost('');
   };
 
@@ -59,8 +60,8 @@ const AddItem = () => {
       <Input
         label='재고'
         type='number'
-        value={count}
-        onChange={(e) => setCount(Number(e.target.value))}
+        value={stock}
+        onChange={(e) => setStock(Number(e.target.value))}
         className='bg-white'
         containerProps={{
           className: 'min-w-0',
