@@ -16,7 +16,7 @@ const TableLow = ({ item }: { item: ItemType }) => {
     );
   };
   return (
-    <tr key={item.id} className='h-[30px]'>
+    <tr key={item.id} className='h-[30px] border border-t-0'>
       <td className='p-3 w-1/3'>
         <p className='truncate'>{item.name}</p>
       </td>
