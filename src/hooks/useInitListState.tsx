@@ -1,6 +1,5 @@
 'use client';
 
-import { ItemType } from '@/model/type';
 import { listState } from '@/recoil/listState';
 import { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
@@ -13,10 +12,7 @@ const useInitListState = () => {
       const list = localStorage.getItem('list');
       if (list) {
         try {
-          const goodsList = JSON.parse(list).map((ele: ItemType) => ({
-            ...ele,
-            count: 0,
-          }));
+          const goodsList = JSON.parse(list);
           setList(goodsList);
         } catch (error) {
           console.error(error);

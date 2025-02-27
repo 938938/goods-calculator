@@ -13,29 +13,34 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [editValues, setEditValues] = useState<ItemType | null>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [isError, setIsError] = useState<boolean>(false);
   const onEditClickHandler = (item: ItemType) => {
     setEditValues({ ...item });
   };
 
   const onDataChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    // setEditValues((prev) => ({
-    //   ...prev,
-    //   [name]: name === 'cost' ? Number(value) || 0 : value,
-    // }));
     setEditValues((prev) => {
-      const updated = prev ?? { id: '', name: '', cost: 0, count: 0 };
+      const updated = prev ?? { id: '', name: '', cost: 99, count: 0 };
 
       return {
         ...updated,
-        [name]: name === 'cost' ? Number(value) || 0 : value,
+        [name]:
+          name === 'cost'
+            ? Number(value) || 0
+            : name === 'count'
+            ? Number(value) || 99
+            : value,
       };
     });
   };
 
   const onSaveHandler = () => {
     if (!editValues) return;
-    if (!editValues.name) return;
+    if (!editValues.name) {
+      setIsError(true);
+      return;
+    }
     setGoodsList((prev) => {
       const editList = prev.map((item) =>
         item.id === editValues.id ? editValues : item
@@ -64,7 +69,18 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
             <Input
               name='name'
               value={editValues.name}
-              onChange={onDataChangeHandler}
+              onChange={(e) => {
+                onDataChangeHandler(e);
+                setIsError(false);
+              }}
+              className='!border-t-blue-gray-200 placeholder:text-blue-gray-300 placeholder:opacity-100  focus:!border-t-gray-900 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'
+              labelProps={{
+                className: 'before:content-none after:content-none',
+              }}
+              containerProps={{
+                className: 'min-w-0',
+              }}
+              error={isError ? true : false}
             />
           ) : (
             <p className='truncate'>{item.name}</p>
@@ -73,10 +89,17 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
         <td className='p-3 w-1/6 text-right'>
           {editValues?.id === item.id ? (
             <Input
-              name='cost'
+              name='count'
               type='number'
-              value={editValues.cost}
+              value={editValues.count}
               onChange={onDataChangeHandler}
+              className='!border-t-blue-gray-200 placeholder:text-blue-gray-300 placeholder:opacity-100  focus:!border-t-gray-900 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'
+              labelProps={{
+                className: 'before:content-none after:content-none',
+              }}
+              containerProps={{
+                className: 'min-w-0',
+              }}
             />
           ) : (
             <p>{item.count}</p>
@@ -89,6 +112,13 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
               type='number'
               value={editValues.cost}
               onChange={onDataChangeHandler}
+              className='!border-t-blue-gray-200 placeholder:text-blue-gray-300 placeholder:opacity-100  focus:!border-t-gray-900 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'
+              labelProps={{
+                className: 'before:content-none after:content-none',
+              }}
+              containerProps={{
+                className: 'min-w-0',
+              }}
             />
           ) : (
             <p>{item.cost.toLocaleString()}</p>

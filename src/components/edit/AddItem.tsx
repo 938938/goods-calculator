@@ -11,7 +11,7 @@ const AddItem = () => {
   const [name, setName] = useState('');
   const [cost, setCost] = useState<number | ''>('');
   const [count, setCount] = useState<number | ''>('');
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState<boolean>(false);
   const setGoodsList = useSetRecoilState(listState);
 
   const onClickHandler = () => {
