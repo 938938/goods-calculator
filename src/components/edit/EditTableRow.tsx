@@ -69,7 +69,7 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
   };
   return (
     <>
-      <tr key={item.id} className='h-[30px] border border-t-0'>
+      <tr key={item.id} className='border border-t-0 flex items-center'>
         <td className='p-3 w-1/4'>
           {editValues?.id === item.id ? (
             <Input

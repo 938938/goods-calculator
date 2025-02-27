@@ -27,7 +27,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <ThemeProvider>
+      <ThemeProvider
+        value={{
+          input: {
+            styles: {
+              base: {
+                container: {
+                  minWidth: '',
+                },
+              },
+            },
+          },
+        }}
+      >
         <RecoilRoot>
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}

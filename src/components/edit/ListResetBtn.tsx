@@ -16,7 +16,7 @@ const ListResetBtn = () => {
     setModalOpen(false);
   };
   return (
-    <div className='flex justify-center items-center w-screen p-2'>
+    <div className='flex justify-center items-center w-full p-2'>
       <Button onClick={() => setModalOpen(true)} className='bg-gray-800'>
         초기화
       </Button>
