@@ -6,7 +6,7 @@ import useInitListState from '@/hooks/useInitListState';
 import { listState } from '@/recoil/listState';
 import ListResetBtn from './ListResetBtn';
 
-const EditItemList = () => {
+const EditItemTable = () => {
   useInitListState();
   const goodsList = useRecoilValue(listState);
 
@@ -32,4 +32,4 @@ const EditItemList = () => {
   );
 };
 
-export default EditItemList;
+export default EditItemTable;
