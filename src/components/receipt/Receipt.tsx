@@ -1,9 +1,19 @@
 import { ReceiptType } from '@/model/type';
 import { Button } from '@material-tailwind/react';
 
-const Receipt = ({ receipt }: { receipt: ReceiptType }) => {
+const Receipt = ({
+  receipt,
+  type,
+}: {
+  receipt: ReceiptType;
+  type: 'partial' | 'total';
+}) => {
   return (
-    <div className='bg-white p-4 shadow-md border relative border-y-8 border-dotted border-gray-600 [clip-path:inset(4px_4px_4px_4px)] w-full flex flex-col gap-2'>
+    <div
+      className={`${
+        type === 'partial' ? 'bg-white' : 'bg-[#FFFBF4]'
+      } p-4 border relative border-y-8 border-dotted border-gray-600 [clip-path:inset(4px_4px_4px_4px)] w-full flex flex-col gap-2`}
+    >
       <div className='text-gray-500 text-sm'>{receipt.date}</div>
       <table className='w-full mt-2 text-sm'>
         <thead>
@@ -16,7 +26,7 @@ const Receipt = ({ receipt }: { receipt: ReceiptType }) => {
         </thead>
         <tbody>
           {receipt.soldItems.map((ele) => (
-            <tr key={ele.name} className='border-b'>
+            <tr key={ele.id} className='border-b'>
               <td className='py-1'>{ele.name}</td>
               <td className='text-right'>{ele.count}</td>
               <td className='text-right'>{ele.cost}</td>

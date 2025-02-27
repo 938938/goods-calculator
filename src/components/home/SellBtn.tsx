@@ -25,6 +25,7 @@ const SellBtn = () => {
         .replace(/-/g, '/'),
       soldItems: selectedItem.map((ele) => {
         return {
+          id: ele.id,
           name: ele.name,
           count: ele.count,
           cost: ele.cost,

@@ -7,6 +7,7 @@ export type ItemType = {
 };
 
 export type soldItemsType = {
+  id: string;
   name: string;
   count: number;
   cost: number;
