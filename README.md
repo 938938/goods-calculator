@@ -12,7 +12,6 @@ NextJS14, material-tailwind, Recoil,
 
 ---
 
-
 <br>
 
 첫화면/계산화면
@@ -27,6 +26,7 @@ NextJS14, material-tailwind, Recoil,
 
 정산화면<br>
 <img width="200" alt="Image" src="https://github.com/user-attachments/assets/e599a512-09c0-43fd-b855-a957d6f1258e" />
+
 ---
 
 <br>
@@ -35,4 +35,7 @@ NextJS14, material-tailwind, Recoil,
 
 - ver1.0.0 <br>
   상품을 입력, 계산 및 판매 관리를 할 수 있습니다.<br>
-  판매 이력을 관리할 수 있습니다.
+  판매 이력을 관리할 수 있습니다.<br>
+  - ver1.0.1 <br>
+    계산 탭에서 재고를 확인할 수 있습니다.<br>
+    초기 수량을 확인할 수 있습니다.<br>
