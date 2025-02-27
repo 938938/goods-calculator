@@ -1,5 +1,10 @@
 import { ReceiptType } from '@/model/type';
 import { Button } from '@material-tailwind/react';
+import DelModal from '../DelModal';
+import { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { receiptState } from '@/recoil/receiptState';
+import { editReceipt } from '@/actions/receipt-actions';
 
 const Receipt = ({
   receipt,
@@ -8,6 +13,16 @@ const Receipt = ({
   receipt: ReceiptType;
   type: 'partial' | 'total';
 }) => {
+  const setReceiptList = useSetRecoilState(receiptState);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const onDeleteHandler = () => {
+    setReceiptList((prev) => {
+      const editList = prev.filter((ele) => ele.id !== receipt.id);
+      editReceipt(editList);
+      return editList;
+    });
+    setModalOpen(false);
+  };
   return (
     <div
       className={`${
@@ -51,7 +66,12 @@ const Receipt = ({
       </table>
       <div className='absolute top-2 right-2'>
         {type === 'partial' ? (
-          <Button variant='outlined' color='orange' size='sm'>
+          <Button
+            variant='outlined'
+            color='orange'
+            size='sm'
+            onClick={() => setModalOpen(true)}
+          >
             삭제
           </Button>
         ) : (
@@ -60,6 +80,12 @@ const Receipt = ({
           </p>
         )}
       </div>
+      <DelModal
+        open={modalOpen}
+        setOpen={setModalOpen}
+        onDeleteHandler={onDeleteHandler}
+        type='삭제'
+      />
     </div>
   );
 };
