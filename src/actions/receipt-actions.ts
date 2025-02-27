@@ -6,6 +6,6 @@ export const editReceipt = async (data: ReceiptType[]) => {
 };
 
 export const deleteReceipt = async () => {
-  localStorage.removeItem('receipt');
+  localStorage.setItem('receipt', JSON.stringify([]));
   return;
 };

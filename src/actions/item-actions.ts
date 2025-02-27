@@ -6,6 +6,6 @@ export const editGoods = async (data: ItemType[]) => {
 };
 
 export const deleteGoods = async () => {
-  localStorage.removeItem('list');
+  localStorage.setItem('list', JSON.stringify([]));
   return;
 };
