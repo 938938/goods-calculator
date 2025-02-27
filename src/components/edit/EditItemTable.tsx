@@ -11,16 +11,22 @@ const EditItemTable = () => {
   const goodsList = useRecoilValue(listState);
 
   return (
-    <div className='h-[calc(100svh-150px)] flex flex-col'>
+    <div className='h-[calc(100svh-70px)] flex flex-col pb-16'>
       <div className='bg-gray-700 text-gray-400 flex'>
         <div className='w-1/4 p-2 text-left'>상품명</div>
         <div className='w-1/6 p-2 text-right'>재고</div>
         <div className='w-1/4 p-2 text-right'>가격</div>
         <div className='p-2 text-center'></div>
       </div>
-      <div className='flex-1 overflow-y-auto'>
+      <div
+        className='flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden'
+        style={{
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+        }}
+      >
         <table className='table-fixed w-full border-collapse'>
-          <tbody className='bg-white overflow-y-scroll h-20'>
+          <tbody className='bg-white h-20'>
             {goodsList.map((item) => (
               <EditTableRow item={item} key={item.id} />
             ))}

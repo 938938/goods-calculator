@@ -16,12 +16,18 @@ const ReceiptList = () => {
 
   useEffect(() => {
     setScrollFn(() => () => {
-      divRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      divRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }, [setScrollFn]);
 
   return (
-    <div className='flex gap-2 flex-col items-center p-4 h-[calc(100svh-70px)] overflow-y-scroll w-full'>
+    <div
+      className='flex gap-2 flex-col items-center p-4 h-[calc(100svh-70px)] overflow-y-scroll w-full [&::-webkit-scrollbar]:hidden'
+      style={{
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none',
+      }}
+    >
       {receiptList.map((ele) => (
         <Receipt receipt={ele} key={ele.id} type='partial' />
       ))}
