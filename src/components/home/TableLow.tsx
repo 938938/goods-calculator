@@ -5,7 +5,7 @@ import { listState } from '@/recoil/listState';
 import { IconButton, Input } from '@material-tailwind/react';
 import { useSetRecoilState } from 'recoil';
 
-const Item = ({ item }: { item: ItemType }) => {
+const TableLow = ({ item }: { item: ItemType }) => {
   const setGoodsList = useSetRecoilState(listState);
 
   const onCountChangeHandler = (newCount: number) => {
@@ -64,4 +64,4 @@ const Item = ({ item }: { item: ItemType }) => {
   );
 };
 
-export default Item;
+export default TableLow;

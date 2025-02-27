@@ -1,10 +1,10 @@
 'use client';
-import Item from './Item';
+import TableLow from './TableLow';
 import { useRecoilValue } from 'recoil';
 import useInitListState from '@/hooks/useInitListState';
 import { listState } from '@/recoil/listState';
 
-const ItemList = () => {
+const ItemTable = () => {
   useInitListState();
   const goodsList = useRecoilValue(listState);
   return (
@@ -18,7 +18,7 @@ const ItemList = () => {
         <table className='table-fixed w-full border-collapse'>
           <tbody className='bg-white overflow-y-scroll h-20'>
             {goodsList.map((item) => (
-              <Item item={item} key={item.id} />
+              <TableLow item={item} key={item.id} />
             ))}
           </tbody>
         </table>
@@ -27,4 +27,4 @@ const ItemList = () => {
   );
 };
 
-export default ItemList;
+export default ItemTable;
