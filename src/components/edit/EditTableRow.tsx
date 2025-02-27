@@ -1,12 +1,13 @@
 'use client';
 
-import { Button, Input } from '@material-tailwind/react';
+import { Button } from '@material-tailwind/react';
 import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import DelModal from '../DelModal';
 import { ItemType } from '@/model/type';
 import { listState } from '@/recoil/listState';
 import { editGoods } from '@/actions/item-actions';
+import EditChangeInput from './EditChangeInput';
 
 const EditTableRow = ({ item }: { item: ItemType }) => {
   const setGoodsList = useSetRecoilState(listState);
@@ -72,18 +73,13 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
       <tr key={item.id} className='border border-t-0 flex items-center'>
         <td className='p-3 w-1/4'>
           {editValues?.id === item.id ? (
-            <Input
+            <EditChangeInput
               name='name'
+              type='text'
               value={editValues.name}
-              onChange={(e) => {
-                onDataChangeHandler(e);
-                setIsError(false);
-              }}
-              className='!border-t-blue-gray-200 placeholder:text-blue-gray-300 placeholder:opacity-100  focus:!border-t-gray-900 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'
-              labelProps={{
-                className: 'before:content-none after:content-none',
-              }}
-              error={isError ? true : false}
+              onDataChangeHandler={onDataChangeHandler}
+              isError={isError}
+              setIsError={setIsError}
             />
           ) : (
             <p className='truncate'>{item.name}</p>
@@ -91,15 +87,11 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
         </td>
         <td className='p-3 w-1/6 text-right'>
           {editValues?.id === item.id ? (
-            <Input
+            <EditChangeInput
               name='stock'
               type='number'
               value={editValues.stock}
-              onChange={onDataChangeHandler}
-              className='!border-t-blue-gray-200 placeholder:text-blue-gray-300 placeholder:opacity-100  focus:!border-t-gray-900 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'
-              labelProps={{
-                className: 'before:content-none after:content-none',
-              }}
+              onDataChangeHandler={onDataChangeHandler}
             />
           ) : (
             <p className={` ${item.stock === 0 && 'text-orange-800'}`}>
@@ -109,15 +101,11 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
         </td>
         <td className='p-3 w-1/4 text-right'>
           {editValues?.id === item.id ? (
-            <Input
+            <EditChangeInput
               name='cost'
               type='number'
               value={editValues.cost}
-              onChange={onDataChangeHandler}
-              className='!border-t-blue-gray-200 placeholder:text-blue-gray-300 placeholder:opacity-100  focus:!border-t-gray-900 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'
-              labelProps={{
-                className: 'before:content-none after:content-none',
-              }}
+              onDataChangeHandler={onDataChangeHandler}
             />
           ) : (
             <p>{item.cost.toLocaleString()}</p>
