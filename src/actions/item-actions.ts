@@ -1,4 +1,4 @@
-import { ItemType } from "@/model/type";
+import { ItemType } from '@/model/type';
 
 export const editGoods = async (data: ItemType[]) => {
   localStorage.setItem('list', JSON.stringify(data));
@@ -6,6 +6,6 @@ export const editGoods = async (data: ItemType[]) => {
 };
 
 export const deleteGoods = async () => {
-  localStorage.clear();
+  localStorage.removeItem('list');
   return;
 };
