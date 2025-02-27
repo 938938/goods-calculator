@@ -14,7 +14,13 @@ const Receipt = ({
         type === 'partial' ? 'bg-white' : 'bg-[#FFFBF4]'
       } p-4 border relative border-y-8 border-dotted border-gray-600 [clip-path:inset(4px_4px_4px_4px)] w-full flex flex-col gap-2`}
     >
-      <div className='text-gray-500 text-sm'>{receipt.date}</div>
+      <p
+        className={`${
+          type === 'partial' ? 'text-gray-500' : 'text-orange-600'
+        } text-sm`}
+      >
+        {receipt.date}
+      </p>
       <table className='w-full mt-2 text-sm'>
         <thead>
           <tr className='text-gray-500 border-b'>
@@ -29,8 +35,8 @@ const Receipt = ({
             <tr key={ele.id} className='border-b'>
               <td className='py-1'>{ele.name}</td>
               <td className='text-right'>{ele.count}</td>
-              <td className='text-right'>{ele.cost}</td>
-              <td className='text-right'>{ele.totalCost}</td>
+              <td className='text-right'>{ele.cost.toLocaleString()}</td>
+              <td className='text-right'>{ele.totalCost.toLocaleString()}</td>
             </tr>
           ))}
         </tbody>
@@ -39,18 +45,21 @@ const Receipt = ({
             <td></td>
             <td className='text-right py-2'>{receipt.totalCount}</td>
             <td></td>
-            <td className='text-right'>{receipt.result}</td>
+            <td className='text-right'>{receipt.result.toLocaleString()}</td>
           </tr>
         </tfoot>
       </table>
-      <Button
-        variant='outlined'
-        color='orange'
-        className='absolute top-2 right-2'
-        size='sm'
-      >
-        삭제
-      </Button>
+      <div className='absolute top-2 right-2'>
+        {type === 'partial' ? (
+          <Button variant='outlined' color='orange' size='sm'>
+            삭제
+          </Button>
+        ) : (
+          <p className='text-orange-600 text-sm m-2'>
+            총 {receipt.soldItems.length}건 주문
+          </p>
+        )}
+      </div>
     </div>
   );
 };
