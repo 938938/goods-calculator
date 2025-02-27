@@ -53,9 +53,6 @@ const AddItem = () => {
         }}
         className='bg-white'
         error={isError ? true : false}
-        containerProps={{
-          className: 'min-w-0',
-        }}
       />
       <Input
         label='재고'
@@ -63,9 +60,6 @@ const AddItem = () => {
         value={stock}
         onChange={(e) => setStock(Number(e.target.value))}
         className='bg-white'
-        containerProps={{
-          className: 'min-w-0',
-        }}
       />
       <Input
         label='가격'
@@ -73,9 +67,6 @@ const AddItem = () => {
         value={cost}
         onChange={(e) => setCost(Number(e.target.value))}
         className='bg-white'
-        containerProps={{
-          className: 'min-w-0',
-        }}
       />
       <Button className='bg-orange-900 w-28 px-4' onClick={onClickHandler}>
         추가

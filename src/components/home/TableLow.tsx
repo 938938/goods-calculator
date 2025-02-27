@@ -41,9 +41,6 @@ const TableLow = ({ item }: { item: ItemType }) => {
             labelProps={{
               className: 'before:content-none after:content-none',
             }}
-            containerProps={{
-              className: 'min-w-0',
-            }}
             max={item.stock}
           />
           <div className='absolute right-1 top-1 flex gap-0.5'>

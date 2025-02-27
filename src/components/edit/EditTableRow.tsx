@@ -83,9 +83,6 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
               labelProps={{
                 className: 'before:content-none after:content-none',
               }}
-              containerProps={{
-                className: 'min-w-0',
-              }}
               error={isError ? true : false}
             />
           ) : (
@@ -103,9 +100,6 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
               labelProps={{
                 className: 'before:content-none after:content-none',
               }}
-              containerProps={{
-                className: 'min-w-0',
-              }}
             />
           ) : (
             <p>{item.stock}</p>
@@ -122,15 +116,12 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
               labelProps={{
                 className: 'before:content-none after:content-none',
               }}
-              containerProps={{
-                className: 'min-w-0',
-              }}
             />
           ) : (
             <p>{item.cost.toLocaleString()}</p>
           )}
         </td>
-        <td className='p-3 flex gap-2 justify-center'>
+        <td className='p-3 flex gap-2 justify-center w-1/3'>
           {editValues?.id === item.id ? (
             <Button
               size='sm'

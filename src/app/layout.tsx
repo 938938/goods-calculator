@@ -33,7 +33,7 @@ export default function RootLayout({
             styles: {
               base: {
                 container: {
-                  minWidth: '',
+                  minWidth: 'min-w-0',
                 },
               },
             },
