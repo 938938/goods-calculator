@@ -1,4 +1,4 @@
-# WishList !
+# 굿즈 계산기
 
 NextJS14, material-tailwind, Recoil,
 <br>
