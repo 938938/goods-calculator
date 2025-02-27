@@ -69,7 +69,7 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
   };
   return (
     <>
-    <tr key={item.id} className='h-[30px] border border-t-0'>
+      <tr key={item.id} className='h-[30px] border border-t-0'>
         <td className='p-3 w-1/4'>
           {editValues?.id === item.id ? (
             <Input
@@ -130,12 +130,12 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
             <p>{item.cost.toLocaleString()}</p>
           )}
         </td>
-        <td className='p-3 flex gap-2'>
+        <td className='p-3 flex gap-2 justify-center'>
           {editValues?.id === item.id ? (
             <Button
               size='sm'
               onClick={onSaveHandler}
-              color='blue'
+              color='orange'
               className='px-3'
             >
               저장
@@ -145,6 +145,8 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
               size='sm'
               onClick={() => onEditClickHandler(item)}
               className='px-3'
+              color='orange'
+              variant='outlined'
             >
               수정
             </Button>
@@ -154,18 +156,21 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
               size='sm'
               onClick={() => setEditValues(null)}
               className='px-3'
+              variant='outlined'
+              color='gray'
             >
               취소
             </Button>
           ) : (
             <Button
               size='sm'
-              color='red'
               onClick={() => {
                 setDeleteId(item.id);
                 setModalOpen(true);
               }}
               className='px-3'
+              color='orange'
+              variant='outlined'
             >
               삭제
             </Button>
