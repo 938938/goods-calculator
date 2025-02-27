@@ -13,7 +13,16 @@ const getInitialList = (): ItemType[] => {
       : [{ id: '123', name: '예시 아이템', cost: 1000, count: 0, stock: 10 }];
   } catch (error) {
     console.error('Failed to parse list from localStorage:', error);
-    return [{ id: '123', name: '예시 아이템', cost: 1000, count: 0, stock: 10 }];
+    return [
+      {
+        id: '123',
+        name: '예시 아이템',
+        cost: 1000,
+        count: 0,
+        stock: 10,
+        initial: 10,
+      },
+    ];
   }
 };
 
