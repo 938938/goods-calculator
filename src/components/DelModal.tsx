@@ -20,17 +20,16 @@ const DelModal = ({
 }) => {
   return (
     <Dialog open={open} handler={() => setOpen(false)} size='xs'>
-      <DialogHeader>정말 {type}하겠습니까?</DialogHeader>
+      <DialogHeader><p className='text-center w-full'>정말 {type}하겠습니까?</p></DialogHeader>
       <DialogFooter className='flex items-center justify-center gap-3'>
         <Button
           variant='text'
-          color='red'
           onClick={() => setOpen(false)}
           className='mr-1'
         >
           <span>취소</span>
         </Button>
-        <Button variant='gradient' color='green' onClick={onDeleteHandler}>
+        <Button variant='gradient' color='orange' onClick={onDeleteHandler}>
           <span>실행</span>
         </Button>
       </DialogFooter>
