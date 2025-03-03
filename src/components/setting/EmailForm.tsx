@@ -11,7 +11,7 @@ const EmailForm = () => {
   useInitReceiptState();
   const [email, setEmail] = useState<string>('');
   const receiptList = useRecoilValue(receiptState);
-  console.log(receiptList);
+  
   return (
     <div>
       <Input
