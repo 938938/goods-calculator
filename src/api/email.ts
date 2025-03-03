@@ -23,6 +23,6 @@ export const sendEmail = async (email: string) => {
 
     return { message: '이메일 전송 성공' };
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 };
