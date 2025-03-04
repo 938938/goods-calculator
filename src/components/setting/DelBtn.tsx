@@ -8,6 +8,7 @@ const DelBtn = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const onDeleteHandler = () => {
     localStorage.clear();
+    setModalOpen(false);
   };
   return (
     <>
