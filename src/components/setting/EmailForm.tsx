@@ -31,10 +31,14 @@ const EmailForm = ({
     <Dialog open={open} handler={() => setOpen(false)} size='xs'>
       <Card className='mx-auto w-full max-w-[24rem]'>
         <CardBody className='flex flex-col gap-4'>
-          <p className='text-red'>이메일 전송</p>
-          <p className='mb-3 font-normal text-gray'>
-            전송받을 이메일을 입력해주세요.
-          </p>
+          <p className='text-black text-lg'>이메일 전송</p>
+          <div>
+            <p className='font-normal text-gray'>정산 내역을 전송받을</p>
+            <p className='font-normal text-gray'>이메일을 입력해주세요.</p>
+            <p className='text-sm text-red-600'>
+              이메일은 하루에 한 번만 보낼 수 있습니다.
+            </p>
+          </div>
           <Input
             label='Email'
             value={email}
@@ -46,12 +50,13 @@ const EmailForm = ({
           <Button
             variant='gradient'
             onClick={() => {
-              sendEmail(email, receiptList, totalReceipt);
+              sendEmail(email, receiptList, totalReceipt!);
               setOpen(false);
             }}
             fullWidth
+            disabled={!totalReceipt}
           >
-            전송하기
+            {!totalReceipt ? '전송할 데이터가 없습니다.' : '전송하기'}
           </Button>
         </CardFooter>
       </Card>
