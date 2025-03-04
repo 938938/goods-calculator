@@ -20,7 +20,7 @@ const ReceiptList = () => {
     });
   }, [setScrollFn]);
 
-  if (!receiptList.length) {
+  if (!receiptList.length || !receiptList) {
     return <></>;
   }
 

@@ -3,11 +3,21 @@
 import { Button } from '@material-tailwind/react';
 import DelModal from '../DelModal';
 import { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { listState } from '@/recoil/listState';
+import { receiptState } from '@/recoil/receiptState';
+import { totalState } from '@/recoil/totalState';
 
 const DelBtn = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const setList = useSetRecoilState(listState);
+  const setReceipt = useSetRecoilState(receiptState);
+  const setTotal = useSetRecoilState(totalState);
   const onDeleteHandler = () => {
     localStorage.clear();
+    setList([]);
+    setReceipt([]);
+    setTotal(undefined);
     setModalOpen(false);
   };
   return (

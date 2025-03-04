@@ -6,6 +6,7 @@ import { totalState } from '@/recoil/totalState';
 
 const TotalReceipt = () => {
   const total = useRecoilValue(totalState);
+  if (!total) return <></>;
 
   return <Receipt receipt={total} type='total' />;
 };
