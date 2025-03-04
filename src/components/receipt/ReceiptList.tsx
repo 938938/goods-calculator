@@ -20,6 +20,10 @@ const ReceiptList = () => {
     });
   }, [setScrollFn]);
 
+  if (!receiptList.length) {
+    return <></>;
+  }
+
   return (
     <div
       className='flex gap-2 flex-col items-center p-4 h-[calc(100svh-70px)] overflow-y-scroll w-full [&::-webkit-scrollbar]:hidden'
