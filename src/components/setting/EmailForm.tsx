@@ -73,14 +73,14 @@ const EmailForm = ({
 
   return (
     <Dialog open={open} handler={() => setOpen(false)} size='xs'>
-      <Card className='mx-auto w-full max-w-[24rem]'>
+      <div className='mx-auto w-full max-w-[24rem]'>
         <CardBody className='flex flex-col gap-4'>
           <p className='text-black text-lg'>이메일 전송</p>
           <div>
             <p className='font-normal text-gray'>정산 내역을 전송받을</p>
             <p className='font-normal text-gray'>이메일을 입력해주세요.</p>
-            <p className='text-sm text-red-600'>
-              이메일은 24시간에 한 번만 보낼 수 있습니다.
+            <p className='text-xs text-red-700 font-semibold'>
+              이메일은 24시간마다 한 번만 보낼 수 있습니다.
             </p>
           </div>
           <Input
@@ -98,11 +98,11 @@ const EmailForm = ({
             disabled={!totalReceipt}
           >
             {!totalReceipt && '전송할 데이터가 없습니다.'}
-            {remainingTime && `재시도 가능: ${remainingTime} 후`}
+            {remainingTime && `재전송 가능: ${remainingTime} 후`}
             {totalReceipt && !remainingTime && '전송하기'}
           </Button>
         </CardFooter>
-      </Card>
+      </div>
     </Dialog>
   );
 };
