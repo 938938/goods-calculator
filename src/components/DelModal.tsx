@@ -3,7 +3,6 @@
 import {
   Button,
   Dialog,
-  DialogBody,
   DialogFooter,
   DialogHeader,
 } from '@material-tailwind/react';
