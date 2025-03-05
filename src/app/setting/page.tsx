@@ -1,11 +1,11 @@
 import DelBtn from '@/components/setting/DelBtn';
-import EmailForm from '@/components/setting/EmailForm';
+import EmailBtn from '@/components/setting/EmailBtn';
 
 const SettingPage = () => {
   return (
-    <div>
+    <div className='flex flex-col items-center justify-center h-[calc(100svh-70px)] gap-2'>
       <DelBtn />
-      <EmailForm />
+      <EmailBtn />
     </div>
   );
 };
