@@ -80,7 +80,7 @@ const EmailForm = ({
             <p className='font-normal text-gray'>정산 내역을 전송받을</p>
             <p className='font-normal text-gray'>이메일을 입력해주세요.</p>
             <p className='text-sm text-red-600'>
-              이메일은 하루에 한 번만 보낼 수 있습니다.
+              이메일은 24시간에 한 번만 보낼 수 있습니다.
             </p>
           </div>
           <Input
