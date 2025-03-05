@@ -6,7 +6,6 @@ import { receiptState } from '@/recoil/receiptState';
 import { totalState } from '@/recoil/totalState';
 import {
   Button,
-  Card,
   CardBody,
   CardFooter,
   Dialog,
