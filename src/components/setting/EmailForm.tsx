@@ -26,6 +26,9 @@ const EmailForm = ({
   const [remainingTime, setRemainingTime] = useState<string | undefined>(
     undefined
   );
+  const [errText, setErrText] = useState<string>('');
+  const regEmail =
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
   const receiptList = useRecoilValue(receiptState);
   const totalReceipt = useRecoilValue(totalState);
@@ -57,11 +60,17 @@ const EmailForm = ({
   useEffect(() => {
     if (open) {
       checkTimeHandler();
+      setEmail('');
+      setErrText('');
     }
   }, [open]);
 
   const sendEmailHandler = () => {
     if (checkTimeHandler()) {
+      return;
+    }
+    if (!regEmail.test(email)) {
+      setErrText('이메일을 정확하게 입력해주세요.');
       return;
     }
     sendEmail(email, receiptList, totalReceipt!);
@@ -85,9 +94,15 @@ const EmailForm = ({
           <Input
             label='Email'
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setErrText('');
+            }}
             size='lg'
           />
+          <p className='text-red-700 text-xs font-semibold text-center'>
+            {errText}
+          </p>
         </CardBody>
         <CardFooter className='pt-0'>
           <Button
