@@ -45,10 +45,10 @@ const useInitReceiptState = () => {
               (sum, item) => sum + item.totalCost,
               0
             ),
+            totalReceipt: receiptList.length,
           } as ReceiptType;
 
           setTotal(total);
-          
         } catch (error) {
           console.error(error);
         }

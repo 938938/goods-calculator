@@ -76,7 +76,7 @@ const Receipt = ({
           </Button>
         ) : (
           <p className='text-orange-600 text-sm m-2'>
-            총 {receipt.soldItems.length}건 주문
+            총 {receipt.totalReceipt!}건 주문
           </p>
         )}
       </div>

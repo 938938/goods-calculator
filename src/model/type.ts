@@ -21,4 +21,5 @@ export type ReceiptType = {
   soldItems: soldItemsType[];
   totalCount: number;
   result: number;
+  totalReceipt?: number;
 };
