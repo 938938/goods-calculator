@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '../config/material-tailwind-theme-provider';
 import { RecoilRoot } from '../config/recoilProvider';
 import Nav from '@/components/Nav';
+import { ToastContainer } from 'react-toastify';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -48,6 +49,7 @@ export default function RootLayout({
               <Nav />
               <div>{children}</div>
             </div>
+            <ToastContainer style={{ zIndex: 99999 }} />
           </body>
         </RecoilRoot>
       </ThemeProvider>

@@ -71,8 +71,9 @@ export const sendEmail = async (
       html: makeHtml(receipt, result),
     });
 
-    return { message: '이메일 전송 성공' };
+    return { success: true };
   } catch (error) {
     console.error(error);
+    return { success: false };
   }
 };

@@ -12,6 +12,7 @@ import {
   Input,
 } from '@material-tailwind/react';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { useRecoilValue } from 'recoil';
 
 const EmailForm = ({
@@ -65,7 +66,7 @@ const EmailForm = ({
     }
   }, [open]);
 
-  const sendEmailHandler = () => {
+  const sendEmailHandler = async () => {
     if (checkTimeHandler()) {
       return;
     }
@@ -73,10 +74,21 @@ const EmailForm = ({
       setErrText('이메일을 정확하게 입력해주세요.');
       return;
     }
-    sendEmail(email, receiptList, totalReceipt!);
-    setOpen(false);
-
-    localStorage.setItem(EMAIL_TIME, Date.now().toString());
+    try {
+      const response = await sendEmail(email, receiptList, totalReceipt!);
+      if (!response.success) {
+        throw new Error();
+      }
+      toast.success(`${email}로 정산 내역을 전송했습니다!`, {
+        position: 'bottom-right',
+      });
+      setOpen(false);
+      localStorage.setItem(EMAIL_TIME, Date.now().toString());
+    } catch {
+      toast.error('이메일 전송에 오류가 발생했습니다.', {
+        position: 'bottom-right',
+      });
+    }
   };
 
   return (
