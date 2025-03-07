@@ -42,7 +42,6 @@ const EmailForm = ({
       setRemainingTime(null);
       return;
     }
-
     const diff = parseInt(sentTime, 10) + HOUR_24_MS - Date.now();
 
     if (diff > 0) {
@@ -61,6 +60,8 @@ const EmailForm = ({
       setEmail('');
       setErrText('');
     }
+    const prevEmail = localStorage.getItem('email');
+    if (prevEmail) setEmail(prevEmail);
     const timer = setInterval(checkTimeHandler, 1000);
     return () => clearInterval(timer);
   }, [open]);
@@ -83,6 +84,7 @@ const EmailForm = ({
       });
       setOpen(false);
       localStorage.setItem(EMAIL_TIME, Date.now().toString());
+      localStorage.setItem('email', email);
     } catch {
       toast.error('이메일 전송에 오류가 발생했습니다.', {
         position: 'bottom-right',
@@ -112,6 +114,7 @@ const EmailForm = ({
               setErrText('');
             }}
             size='lg'
+            disabled={!!remainingTime}
           />
           <p className='text-red-700 text-xs font-semibold text-center'>
             {errText}
