@@ -26,6 +26,7 @@ const EmailForm = ({
   const [email, setEmail] = useState<string>('');
   const [remainingTime, setRemainingTime] = useState<string | null>(null);
   const [errText, setErrText] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
   const regEmail =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
@@ -72,11 +73,11 @@ const EmailForm = ({
       setErrText('이메일을 정확하게 입력해주세요.');
       return;
     }
+    setLoading(true);
     try {
       const response = await sendEmail(email, receiptList, totalReceipt!);
-      if (!response.success) {
-        throw new Error();
-      }
+      if (!response.success) throw new Error();
+
       toast.success(`${email}로 정산 내역을 전송했습니다!`, {
         position: 'bottom-right',
       });
@@ -86,6 +87,8 @@ const EmailForm = ({
       toast.error('이메일 전송에 오류가 발생했습니다.', {
         position: 'bottom-right',
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -119,7 +122,9 @@ const EmailForm = ({
             variant='gradient'
             onClick={sendEmailHandler}
             fullWidth
-            disabled={!totalReceipt}
+            disabled={!totalReceipt || !!remainingTime || loading}
+            loading={loading}
+            className='justify-center'
           >
             {!totalReceipt && '전송할 데이터가 없습니다.'}
             {remainingTime && `재전송 가능: ${remainingTime} 후`}
