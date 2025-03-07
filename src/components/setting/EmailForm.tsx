@@ -24,9 +24,7 @@ const EmailForm = ({
 }) => {
   useInitReceiptState();
   const [email, setEmail] = useState<string>('');
-  const [remainingTime, setRemainingTime] = useState<string | undefined>(
-    undefined
-  );
+  const [remainingTime, setRemainingTime] = useState<string | null>(null);
   const [errText, setErrText] = useState<string>('');
   const regEmail =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -40,22 +38,20 @@ const EmailForm = ({
   const checkTimeHandler = () => {
     const sentTime = localStorage.getItem(EMAIL_TIME);
     if (!sentTime) {
-      setRemainingTime(undefined);
+      setRemainingTime(null);
       return;
     }
 
-    const sentTimestamp = parseInt(sentTime, 10);
-    const currentTime = Date.now();
-    const diff = sentTimestamp + HOUR_24_MS - currentTime;
+    const diff = parseInt(sentTime, 10) + HOUR_24_MS - Date.now();
 
     if (diff > 0) {
       const hours = Math.floor(diff / 3600000);
       const minutes = Math.floor((diff % 3600000) / 60000);
       const seconds = Math.floor((diff % 60000) / 1000);
-      setRemainingTime(() => `${hours}시간 ${minutes}분 ${seconds}초`);
-      return true;
+      setRemainingTime(`${hours}시간 ${minutes}분 ${seconds}초`);
+    } else {
+      setRemainingTime(null);
     }
-    return undefined;
   };
 
   useEffect(() => {
@@ -64,10 +60,12 @@ const EmailForm = ({
       setEmail('');
       setErrText('');
     }
+    const timer = setInterval(checkTimeHandler, 1000);
+    return () => clearInterval(timer);
   }, [open]);
 
   const sendEmailHandler = async () => {
-    if (checkTimeHandler()) {
+    if (remainingTime) {
       return;
     }
     if (!regEmail.test(email)) {
