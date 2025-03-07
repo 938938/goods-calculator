@@ -19,6 +19,9 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: '굿즈 계산기',
+  other: {
+    'google-site-verification': 'DZD0wvknLXCuyQjeRvXtsMe2iKpBCpNjto3tucdP190',
+  },
 };
 
 export default function RootLayout({
