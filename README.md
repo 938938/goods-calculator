@@ -2,7 +2,7 @@
 
 NextJS14, material-tailwind, Recoil,
 <br>
-사이트 : https://e-goods-calculator.vercel.app/
+[사이트](https://e-goods-calculator.vercel.app) / [기록 블로그](https://velog.io/@938938/Toy-YesOrNo-.1)
 <br>
 개인이 판매하는 물건을 계산할 수 있는 사이트입니다.<br>
 수량을 체크하여 총액을 계산하거나, 재고를 관리할 수 있습니다.<br>
