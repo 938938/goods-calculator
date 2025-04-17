@@ -59,14 +59,14 @@ const AddItem = () => {
         label='재고'
         type='number'
         value={stock}
-        onChange={(e) => setStock(Number(e.target.value))}
+        onChange={(e) => setStock(Math.min(Number(e.target.value), 999))}
         className='bg-white'
       />
       <Input
         label='가격'
         type='number'
         value={cost}
-        onChange={(e) => setCost(Number(e.target.value))}
+        onChange={(e) => setCost(Math.min(Number(e.target.value), 9999999))}
         className='bg-white'
       />
       <Button className='bg-orange-900 w-28 px-4' onClick={onClickHandler}>

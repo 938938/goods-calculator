@@ -35,9 +35,9 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
         ...updated,
         [name]:
           name === 'cost'
-            ? Number(value) || 0
+            ? Math.min(Number(value), 9999999) || 0
             : name === 'stock'
-            ? Number(value) || 0
+            ? Math.min(Number(value), 999) || 0
             : value,
       };
     });
