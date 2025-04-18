@@ -125,7 +125,7 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
               size='sm'
               onClick={onSaveHandler}
               color='orange'
-              className='px-3'
+              className='px-2'
             >
               저장
             </Button>
@@ -133,7 +133,7 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
             <Button
               size='sm'
               onClick={() => onEditClickHandler(item)}
-              className='px-3'
+              className='px-2'
               color='orange'
               variant='outlined'
             >
@@ -144,7 +144,7 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
             <Button
               size='sm'
               onClick={() => setEditValues(null)}
-              className='px-3'
+              className='px-2'
               variant='outlined'
               color='gray'
             >
@@ -157,7 +157,7 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
                 setDeleteId(item.id);
                 setModalOpen(true);
               }}
-              className='px-3'
+              className='px-2'
               color='orange'
               variant='outlined'
             >

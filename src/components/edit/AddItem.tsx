@@ -69,7 +69,7 @@ const AddItem = () => {
         onChange={(e) => setCost(Math.min(Number(e.target.value), 9999999))}
         className='bg-white'
       />
-      <Button className='bg-orange-900 w-28 px-4' onClick={onClickHandler}>
+      <Button className='bg-orange-900 w-28 px-2' onClick={onClickHandler}>
         추가
       </Button>
     </BottonBox>
