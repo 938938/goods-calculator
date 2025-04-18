@@ -8,7 +8,7 @@ const EmailBtn = () => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <>
-      <Button onClick={() => setOpen(true)}>이메일 전송하기</Button>
+      <Button onClick={() => setOpen(true)} className='w-full'>이메일 전송하기</Button>
       <EmailForm open={open} setOpen={setOpen} />
     </>
   );
