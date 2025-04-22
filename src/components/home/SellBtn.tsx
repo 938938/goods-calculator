@@ -36,7 +36,7 @@ const SellBtn = () => {
       result: result,
     };
     setReceiptList((prev) => {
-      const newList = [...prev, receiptData];
+      const newList = [receiptData, ...prev];
       editReceipt(newList);
       return newList;
     });
