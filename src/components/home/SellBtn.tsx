@@ -16,13 +16,21 @@ const SellBtn = () => {
       (prev, cur) => prev + cur.cost * cur.count,
       0
     );
+    const date = new Date();
+    const formattedDate = new Intl.DateTimeFormat('ko-KR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    })
+      .format(date)
+      .replace(/\. /g, '/')
+      .replace('.', '');
     const receiptData = {
-      id: new Date().toISOString(),
-      date: new Date()
-        .toISOString()
-        .slice(0, 16)
-        .replace('T', ' ')
-        .replace(/-/g, '/'),
+      id: date.toISOString(),
+      date: formattedDate,
       soldItems: selectedItem.map((ele) => {
         return {
           id: ele.id,
