@@ -42,7 +42,7 @@ const Nav = () => {
             color='deep-orange'
             variant={pathname === '/edit' ? 'filled' : 'text'}
           >
-            수정
+            굿즈 관리
           </Button>
         </Link>
         <Link className='basis-1/3' href={'/receipt'}>
@@ -52,7 +52,7 @@ const Nav = () => {
             color='deep-orange'
             variant={pathname === '/receipt' ? 'filled' : 'text'}
           >
-            정산
+            판매 내역
           </Button>
         </Link>
         <Link href={'/setting'}>
