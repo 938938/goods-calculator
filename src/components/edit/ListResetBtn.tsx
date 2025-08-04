@@ -18,7 +18,7 @@ const ListResetBtn = () => {
   return (
     <div className='flex justify-center items-center w-full p-2'>
       <Button onClick={() => setModalOpen(true)} className='bg-gray-800'>
-        초기화
+        모든 굿즈 삭제
       </Button>
       <DelModal
         open={modalOpen}
