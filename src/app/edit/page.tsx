@@ -1,11 +1,9 @@
-import AddItem from '@/components/edit/AddItem';
-import EditItemTable from '@/components/edit/EditItemTable';
+import EditComponents from '@/components/edit/EditComponents';
 
 const EditPage = () => {
   return (
     <div className='flex gap-3 flex-col'>
-      <EditItemTable />
-      <AddItem />
+      <EditComponents />
     </div>
   );
 };

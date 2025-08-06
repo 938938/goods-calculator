@@ -3,11 +3,11 @@
 import { editGoods } from '@/actions/item-actions';
 import { listState } from '@/recoil/listState';
 import { Button, Input } from '@material-tailwind/react';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import BottonBox from '../BottonBox';
 
-const AddItem = () => {
+const AddItem = forwardRef<HTMLInputElement>((_, addRef) => {
   const [name, setName] = useState('');
   const [cost, setCost] = useState<number | ''>('');
   const [stock, setStock] = useState<number | ''>('');
@@ -45,6 +45,7 @@ const AddItem = () => {
   return (
     <BottonBox>
       <Input
+        inputRef={addRef}
         label='상품명'
         type='text'
         value={name}
@@ -74,6 +75,8 @@ const AddItem = () => {
       </Button>
     </BottonBox>
   );
-};
+});
+
+AddItem.displayName = 'AddItem';
 
 export default AddItem;

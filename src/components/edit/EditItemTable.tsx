@@ -5,8 +5,13 @@ import EditTableRow from './EditTableRow';
 import useInitListState from '@/hooks/useInitListState';
 import { listState } from '@/recoil/listState';
 import ListResetBtn from './ListResetBtn';
+import AddControlBtn from './AddControlBtn';
 
-const EditItemTable = () => {
+const EditItemTable = ({
+  focusInputHandler,
+}: {
+  focusInputHandler: () => void;
+}) => {
   useInitListState();
   const goodsList = useRecoilValue(listState);
 
@@ -35,6 +40,7 @@ const EditItemTable = () => {
                 ))}
               </tbody>
             </table>
+            <AddControlBtn focusInputHandler={focusInputHandler} />
             <ListResetBtn />
           </div>
         </>
