@@ -49,3 +49,5 @@ NextJS14, material-tailwind, Recoil,
 - ver1.1.2 <br>
   문구를 직관적으로 변경.<br>
   '굿즈 추가'버튼 추가.<br>
+- ver1.1.3 <br>
+  계산 탭에서의 가격 표시 변경. 긴 이름의 상품명도 표시되도록 변경.<br>
