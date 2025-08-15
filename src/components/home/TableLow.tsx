@@ -23,24 +23,23 @@ const TableLow = ({ item }: { item: ItemType }) => {
   };
   return (
     <tr key={item.id} className='border border-t-0'>
-      <td className='p-3 w-1/3'>
+      <td className='p-3 w-4/5'>
         <p className={`truncate ${item.stock === 0 && 'text-gray-400'}`}>
           {item.name}
         </p>
-        <p
-          className={`text-xs ${
-            item.stock === 0 ? 'text-orange-800' : 'text-gray-500'
-          }`}
-        >
-          잔여 : {item.stock}개
-        </p>
-      </td>
-      <td
-        className={`p-3 text-right w-1/4 ${
-          item.stock === 0 && 'text-gray-400'
-        }`}
-      >
-        {item.cost.toLocaleString()}
+        <div className='flex gap-1'>
+          <p className={`text-xs text-gray-500`}>
+            가격 : {item.cost.toLocaleString()}원
+          </p>
+          <p className='text-xs text-gray-500'>/</p>
+          <p
+            className={`text-xs ${
+              item.stock === 0 ? 'text-orange-800' : 'text-gray-500'
+            }`}
+          >
+            잔여 : {item.stock}개
+          </p>
+        </div>
       </td>
       <td className='p-3 w-5/12'>
         <div className='flex border rounded-lg gap-2 justify-between'>

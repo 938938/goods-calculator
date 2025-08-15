@@ -10,8 +10,7 @@ const ItemTable = () => {
   return (
     <div className='h-[calc(100svh-70px)] flex flex-col pb-16'>
       <div className='bg-gray-700 text-gray-400 flex'>
-        <div className='w-1/3 p-2 text-left'>상품명</div>
-        <div className='w-1/4 p-2 text-right'>가격</div>
+        <div className='w-4/5 p-2 text-left'>상품명</div>
         <div className='w-5/12 p-2 text-center'>수량</div>
       </div>
       <div
