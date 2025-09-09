@@ -7,9 +7,12 @@ import Receipt from './Receipt';
 import TotalReceipt from './TotalReceipt';
 import { scrollTotalReceiptState } from '@/recoil/scrollTotalReceiptState';
 import { useEffect, useRef } from 'react';
+import useSyncStorage from '@/hooks/useSyncStorage';
 
 const ReceiptList = () => {
   useInitReceiptState();
+  useSyncStorage();
+
   const receiptList = useRecoilValue(receiptState);
   const divRef = useRef<HTMLDivElement>(null);
   const setScrollFn = useSetRecoilState(scrollTotalReceiptState);
