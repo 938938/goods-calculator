@@ -12,7 +12,10 @@ const useSyncStorage = () => {
 
   useEffect(() => {
     const handler = (event: StorageEvent) => {
-      if (!event.key) return;
+      if (!event.key) {
+        setGoodsList([]);
+        setReceiptList([]);
+      }
 
       if (event.key === 'list') {
         const newData: ItemType[] = event.newValue
