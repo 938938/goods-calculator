@@ -1,7 +1,6 @@
 'use client';
 
 import { sendEmail } from '@/api/email';
-import useInitReceiptState from '@/hooks/useInitReceiptState';
 import { receiptState } from '@/recoil/receiptState';
 import { totalState } from '@/recoil/totalState';
 import {
@@ -22,7 +21,6 @@ const EmailForm = ({
   open: boolean;
   setOpen: (value: boolean) => void;
 }) => {
-  useInitReceiptState();
   const [email, setEmail] = useState<string>('');
   const [remainingTime, setRemainingTime] = useState<string | null>(null);
   const [errText, setErrText] = useState<string>('');

@@ -1,6 +1,5 @@
 'use client';
 
-import useInitReceiptState from '@/hooks/useInitReceiptState';
 import { receiptState } from '@/recoil/receiptState';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import Receipt from './Receipt';
@@ -10,7 +9,6 @@ import { useEffect, useRef } from 'react';
 import useSyncStorage from '@/hooks/useSyncStorage';
 
 const ReceiptList = () => {
-  useInitReceiptState();
   useSyncStorage();
 
   const receiptList = useRecoilValue(receiptState);

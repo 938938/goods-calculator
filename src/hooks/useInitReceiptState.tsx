@@ -54,7 +54,7 @@ const useInitReceiptState = () => {
         }
       }
     }
-  }, [setList]);
+  }, [setList, setTotal]);
 };
 
 export default useInitReceiptState;

@@ -1,13 +1,9 @@
 'use client';
 import TableLow from './TableLow';
 import { useRecoilValue } from 'recoil';
-import useInitListState from '@/hooks/useInitListState';
 import { listState } from '@/recoil/listState';
-import useSyncStorage from '@/hooks/useSyncStorage';
 
 const ItemTable = () => {
-  useInitListState();
-  useSyncStorage();
   const goodsList = useRecoilValue(listState);
   return (
     <div className='h-[calc(100svh-70px)] flex flex-col pb-16'>
