@@ -22,6 +22,15 @@ export const metadata: Metadata = {
   title: '굿즈 계산기',
   description:
     '오프라인 행사에서 굿즈의 계산과 관리를 더욱 쉽게 할 수 있도록 돕는 사이트입니다.',
+  openGraph: {
+    title: '굿즈 계산기',
+    description:
+      '오프라인 행사에서 굿즈의 계산과 관리를 더욱 쉽게 할 수 있도록 돕는 사이트입니다.',
+    url: 'https://e-goods-calculator.vercel.app',
+    siteName: '굿즈 계산기',
+    locale: 'ko_KR',
+    type: 'website',
+  },
   other: {
     'google-site-verification': 'DZD0wvknLXCuyQjeRvXtsMe2iKpBCpNjto3tucdP190',
   },
