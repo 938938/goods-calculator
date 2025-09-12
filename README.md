@@ -53,3 +53,5 @@ NextJS14, material-tailwind, Recoil,
   계산 탭에서의 가격 표시 변경. 긴 이름의 상품명도 표시되도록 변경.<br>
 - ver1.2.0 <br>
   복수의 탭에서도 LocalStorage의 변경이 연동되도록 업데이트.<br>
+- ver1.2.1 <br>
+  상품명을 클릭했을 때도 갯수 체크가 되도록 수정.<br>
