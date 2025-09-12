@@ -21,10 +21,16 @@ const TableLow = ({ item }: { item: ItemType }) => {
       )
     );
   };
+  const onPlusCountHandler = () => {
+    onCountChangeHandler(Math.min(item.count + 1, item.stock));
+  };
   return (
     <tr key={item.id} className='border border-t-0'>
-      <td className='p-3 w-4/5'>
-        <p className={`truncate ${item.stock === 0 && 'text-gray-400'}`}>
+      <td className='p-3 w-4/'>
+        <p
+          className={`truncate ${item.stock === 0 && 'text-gray-400'}`}
+          onClick={onPlusCountHandler}
+        >
           {item.name}
         </p>
         <div className='flex gap-1'>
@@ -74,9 +80,7 @@ const TableLow = ({ item }: { item: ItemType }) => {
             className={`rounded ${
               item.count === item.stock && 'text-gray-200'
             }`}
-            onClick={() =>
-              onCountChangeHandler(Math.min(item.count + 1, item.stock))
-            }
+            onClick={onPlusCountHandler}
             disabled={item.count === item.stock}
           >
             +
